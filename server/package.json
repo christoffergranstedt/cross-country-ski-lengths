@@ -1,0 +1,23 @@
+{
+  "name": "skies-length-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/api/server.js",
+  "scripts": {
+    "start": "ts-node-dev src/api/server.ts",
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^14.2.0",
+    "expess": "^0.0.1-security",
+    "express-async-errors": "^3.1.1",
+    "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.10",
+    "ts-node-dev": "^1.1.8"
+  }
+}
