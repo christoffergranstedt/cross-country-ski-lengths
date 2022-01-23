@@ -1,4 +1,4 @@
-import { TypeOfSkies } from '../../enums/TypeOfSkies'
+import { TypeOfSki } from '../../enums/TypeOfSki'
 import { BaseSkier } from './base.skier'
 
 export class OldestSkier extends BaseSkier {
@@ -7,8 +7,8 @@ export class OldestSkier extends BaseSkier {
   private static MIN_CM_ADDED_FREESTYLE = 10
   private static MAX_CM_ADDED_FREESTYLE = 15
 
-  public getRecomendedSkiesMinLengthCm (): number {
-    if (this.typeOfSkies === TypeOfSkies.Classic) {
+  public getRecommendedSkiesMinLengthCm (): number {
+    if (this.typeOfSkies === TypeOfSki.Classic) {
       const calculatedLength = this.lengthCm + OldestSkier.CM_ADDED_CLASSIC
       return this.isLengthSmallerMaxManifactured(this.typeOfSkies, calculatedLength) ? calculatedLength : BaseSkier.MAX_LENGTH_CM_CLASSIC_SKIES
     } else {
@@ -17,8 +17,8 @@ export class OldestSkier extends BaseSkier {
     }
   }
 
-  public getRecomendedSkiesMaxLengthCm (): number {
-    if (this.typeOfSkies === TypeOfSkies.Classic) {
+  public getRecommendedSkiesMaxLengthCm (): number {
+    if (this.typeOfSkies === TypeOfSki.Classic) {
       const calculatedLength = this.lengthCm + OldestSkier.CM_ADDED_CLASSIC
       return this.isLengthSmallerMaxManifactured(this.typeOfSkies, calculatedLength) ? calculatedLength : BaseSkier.MAX_LENGTH_CM_CLASSIC_SKIES
     } else {

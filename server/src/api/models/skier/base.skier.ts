@@ -1,4 +1,4 @@
-import { TypeOfSkies } from '../../enums/TypeOfSkies'
+import { TypeOfSki } from '../../enums/TypeOfSki'
 
 export abstract class BaseSkier {
   protected static MAX_LENGTH_CM_CLASSIC_SKIES = 207
@@ -6,16 +6,16 @@ export abstract class BaseSkier {
 
   protected lengthCm: number
   protected age: number
-  protected typeOfSkies: TypeOfSkies
+  protected typeOfSkies: TypeOfSki
 
-  public constructor (lengthCm: number, age: number, typeOfSkies: TypeOfSkies) {
+  public constructor (lengthCm: number, age: number, typeOfSkies: TypeOfSki) {
     this.lengthCm = lengthCm
     this.age = age
     this.typeOfSkies = typeOfSkies
   }
 
-  protected isLengthSmallerMaxManifactured (typeOfSkies: TypeOfSkies, calculatedLengthCm: number) {
-    if (typeOfSkies === TypeOfSkies.Classic) {
+  protected isLengthSmallerMaxManifactured (typeOfSkies: TypeOfSki, calculatedLengthCm: number) {
+    if (typeOfSkies === TypeOfSki.Classic) {
       return calculatedLengthCm < BaseSkier.MAX_LENGTH_CM_CLASSIC_SKIES
     } else {
       return calculatedLengthCm < BaseSkier.MAX_LENGTH_CM_FREESTYLE_SKIES

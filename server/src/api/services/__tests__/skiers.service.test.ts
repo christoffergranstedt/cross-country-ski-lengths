@@ -1,4 +1,4 @@
-import { TypeOfSkies } from '../../enums/TypeOfSkies'
+import { TypeOfSki } from '../../enums/TypeOfSki'
 import { InputValidationError } from '../../errors/InputValidationError'
 import { SkiersService } from '../skiers.service'
 
@@ -9,9 +9,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 50
         const age = -1
-        const typeOfSkies = TypeOfSkies.Classic
+        const typeOfSki = TypeOfSki.Classic
         expect(() => {
-          skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+          skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
         }).toThrow(InputValidationError)
       })
 
@@ -19,9 +19,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = -1
         const age = 0
-        const typeOfSkies = TypeOfSkies.Classic
+        const typeOfSki = TypeOfSki.Classic
         expect(() => {
-          skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+          skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
         }).toThrow(InputValidationError)
       })
 
@@ -29,9 +29,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 50
         const age = 0
-        const typeOfSkies = TypeOfSkies.Classic
+        const typeOfSki = TypeOfSki.Classic
         const expectedSkiLength = skierLengthCm
-        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
         expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
@@ -41,9 +41,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 50
         const age = 0
-        const typeOfSkies = TypeOfSkies.Freestyle
+        const typeOfSki = TypeOfSki.Freestyle
         const expectedSkiLength = skierLengthCm
-        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
         expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
@@ -53,9 +53,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 150
         const age = 4
-        const typeOfSkies = TypeOfSkies.Classic
+        const typeOfSki = TypeOfSki.Classic
         const expectedSkiLength = skierLengthCm
-        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
         expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
@@ -65,9 +65,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 150
         const age = 4
-        const typeOfSkies = TypeOfSkies.Freestyle
+        const typeOfSki = TypeOfSki.Freestyle
         const expectedSkiLength = skierLengthCm
-        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
         expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
@@ -77,9 +77,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 150
         const age = 5
-        const typeOfSkies = TypeOfSkies.Freestyle
+        const typeOfSki = TypeOfSki.Freestyle
         const expectedSkiLength = skierLengthCm
-        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMinLength).not.toEqual(expectedSkiLength)
         expect(recommendedSkiesMaxLength).not.toEqual(expectedSkiLength)
@@ -91,9 +91,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 100
         const age = 5
-        const typeOfSkies = TypeOfSkies.Classic
+        const typeOfSki = TypeOfSki.Classic
         const expectedSkiLength = skierLengthCm + 10
-        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
         expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
 
@@ -101,9 +101,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 100
         const age = 5
-        const typeOfSkies = TypeOfSkies.Freestyle
+        const typeOfSki = TypeOfSki.Freestyle
         const expectedSkiLength = skierLengthCm + 10
-        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
@@ -112,9 +112,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 100
         const age = 5
-        const typeOfSkies = TypeOfSkies.Classic
+        const typeOfSki = TypeOfSki.Classic
         const expectedSkiLength = skierLengthCm + 20
-        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
         expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
 
@@ -122,9 +122,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 100
         const age = 5
-        const typeOfSkies = TypeOfSkies.Freestyle
+        const typeOfSki = TypeOfSki.Freestyle
         const expectedSkiLength = skierLengthCm + 20
-        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
@@ -132,9 +132,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 100
         const age = 8
-        const typeOfSkies = TypeOfSkies.Classic
+        const typeOfSki = TypeOfSki.Classic
         const expectedSkiLength = skierLengthCm + 10
-        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
         expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
 
@@ -142,9 +142,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 100
         const age = 8
-        const typeOfSkies = TypeOfSkies.Freestyle
+        const typeOfSki = TypeOfSki.Freestyle
         const expectedSkiLength = skierLengthCm + 10
-        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
@@ -153,9 +153,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 100
         const age = 8
-        const typeOfSkies = TypeOfSkies.Classic
+        const typeOfSki = TypeOfSki.Classic
         const expectedSkiLength = skierLengthCm + 20
-        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
         expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
 
@@ -163,9 +163,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 100
         const age = 8
-        const typeOfSkies = TypeOfSkies.Freestyle
+        const typeOfSki = TypeOfSki.Freestyle
         const expectedSkiLength = skierLengthCm + 20
-        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
@@ -176,9 +176,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 160
         const age = 9
-        const typeOfSkies = TypeOfSkies.Classic
+        const typeOfSki = TypeOfSki.Classic
         const expectedSkiLength = skierLengthCm + 20
-        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
         expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
 
@@ -186,9 +186,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 160
         const age = 9
-        const typeOfSkies = TypeOfSkies.Freestyle
+        const typeOfSki = TypeOfSki.Freestyle
         const expectedSkiLength = skierLengthCm + 10
-        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
@@ -197,9 +197,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 160
         const age = 9
-        const typeOfSkies = TypeOfSkies.Classic
+        const typeOfSki = TypeOfSki.Classic
         const expectedSkiLength = skierLengthCm + 20
-        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
         expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
 
@@ -207,9 +207,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 160
         const age = 9
-        const typeOfSkies = TypeOfSkies.Freestyle
+        const typeOfSki = TypeOfSki.Freestyle
         const expectedSkiLength = skierLengthCm + 15
-        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
@@ -218,9 +218,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 160
         const age = 100
-        const typeOfSkies = TypeOfSkies.Classic
+        const typeOfSki = TypeOfSki.Classic
         const expectedSkiLength = skierLengthCm + 20
-        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
         expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
 
@@ -228,9 +228,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 160
         const age = 100
-        const typeOfSkies = TypeOfSkies.Freestyle
+        const typeOfSki = TypeOfSki.Freestyle
         const expectedSkiLength = skierLengthCm + 10
-        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
@@ -239,9 +239,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 160
         const age = 100
-        const typeOfSkies = TypeOfSkies.Classic
+        const typeOfSki = TypeOfSki.Classic
         const expectedSkiLength = skierLengthCm + 20
-        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
         expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
 
@@ -249,9 +249,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 160
         const age = 100
-        const typeOfSkies = TypeOfSkies.Freestyle
+        const typeOfSki = TypeOfSki.Freestyle
         const expectedSkiLength = skierLengthCm + 15
-        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
@@ -260,9 +260,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 186
         const age = 100
-        const typeOfSkies = TypeOfSkies.Classic
+        const typeOfSki = TypeOfSki.Classic
         const expectedSkiLength = skierLengthCm + 20
-        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
         expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
@@ -272,9 +272,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 188
         const age = 100
-        const typeOfSkies = TypeOfSkies.Classic
+        const typeOfSki = TypeOfSki.Classic
         const maxManifacturedLength = 207
-        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMinLength).toEqual(maxManifacturedLength)
         expect(recommendedSkiesMaxLength).toEqual(maxManifacturedLength)
@@ -284,9 +284,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 181
         const age = 100
-        const typeOfSkies = TypeOfSkies.Freestyle
+        const typeOfSki = TypeOfSki.Freestyle
         const expectedSkiLength = skierLengthCm + 10
-        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
@@ -295,9 +295,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 183
         const age = 100
-        const typeOfSkies = TypeOfSkies.Freestyle
+        const typeOfSki = TypeOfSki.Freestyle
         const maxManifacturedLength = 192
-        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMinLength).toEqual(maxManifacturedLength)
       })
@@ -306,9 +306,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 177
         const age = 100
-        const typeOfSkies = TypeOfSkies.Freestyle
+        const typeOfSki = TypeOfSki.Freestyle
         const expectedSkiLength = skierLengthCm + 15
-        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
@@ -317,9 +317,9 @@ describe('skiers', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 179
         const age = 100
-        const typeOfSkies = TypeOfSkies.Freestyle
+        const typeOfSki = TypeOfSki.Freestyle
         const maxManifacturedLength = 192
-        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
 
         expect(recommendedSkiesMaxLength).toEqual(maxManifacturedLength)
       })
