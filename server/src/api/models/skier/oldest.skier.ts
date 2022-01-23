@@ -13,7 +13,7 @@ export class OldestSkier extends BaseSkier {
       return this.isLengthSmallerMaxManifactured(this.typeOfSkies, calculatedLength) ? calculatedLength : BaseSkier.MAX_LENGTH_CM_CLASSIC_SKIES
     } else {
       const calculatedLength = this.lengthCm + OldestSkier.MIN_CM_ADDED_FREESTYLE
-      return this.isLengthSmallerMaxManifactured(this.typeOfSkies, calculatedLength) ? calculatedLength : BaseSkier.MAX_LENGTH_CM_CLASSIC_SKIES
+      return this.isLengthSmallerMaxManifactured(this.typeOfSkies, calculatedLength) ? calculatedLength : BaseSkier.MAX_LENGTH_CM_FREESTYLE_SKIES
     }
   }
 

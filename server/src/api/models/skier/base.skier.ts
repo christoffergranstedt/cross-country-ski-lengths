@@ -16,9 +16,9 @@ export abstract class BaseSkier {
 
   protected isLengthSmallerMaxManifactured (typeOfSkies: TypeOfSkies, calculatedLengthCm: number) {
     if (typeOfSkies === TypeOfSkies.Classic) {
-      return calculatedLengthCm > BaseSkier.MAX_LENGTH_CM_CLASSIC_SKIES
+      return calculatedLengthCm < BaseSkier.MAX_LENGTH_CM_CLASSIC_SKIES
     } else {
-      return calculatedLengthCm > BaseSkier.MAX_LENGTH_CM_FREESTYLE_SKIES
+      return calculatedLengthCm < BaseSkier.MAX_LENGTH_CM_FREESTYLE_SKIES
     }
   }
 
