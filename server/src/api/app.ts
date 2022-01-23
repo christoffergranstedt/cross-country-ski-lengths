@@ -2,7 +2,6 @@ import express, { Request, Response, NextFunction, Application } from 'express'
 import cors from 'cors'
 import { NotFoundError } from './errors'
 import { errorHandler } from './middlewares/errorHandler'
-
 export class App {
   private app: Application
   private port: number

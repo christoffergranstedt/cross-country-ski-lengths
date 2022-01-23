@@ -5,7 +5,7 @@ import { YoungSkier } from '../models/skier/young.skier'
 import { YoungestSkier } from '../models/skier/youngest.skier'
 
 export class SkiersService {
-  public calculateLengthOfSkiesService = ((lengthCm: number, age: number, typeOfSkies: TypeOfSkies) => {
+  public calculateLengthOfSkiesService = ((lengthCm: number, age: number, typeOfSkies: TypeOfSkies): { recomendedSkiesMinLength: number, recomendedSkiesMaxLength: number } => {
     if (age < YoungestSkier.MIN_AGE) {
       throw new InputValidationError([{ message: 'Someone can not be younger than 0 years old' }])
     }
