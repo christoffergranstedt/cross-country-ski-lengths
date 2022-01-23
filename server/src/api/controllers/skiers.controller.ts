@@ -1,11 +1,11 @@
 import { Request, Response } from 'express'
-import { SkiesService } from '../services/skies.services'
+import { SkiersService } from '../services/skiers.service'
 
 export class SkiersController {
-  private skiesService: SkiesService
+  private skiersService: SkiersService
 
-  public constructor (skiesService: SkiesService) {
-    this.skiesService = skiesService
+  public constructor (skiersService: SkiersService) {
+    this.skiersService = skiersService
   }
 
   public getRecomendedSkiLengths = async (req: Request, res: Response) => {
