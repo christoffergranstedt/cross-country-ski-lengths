@@ -1,32 +1,23 @@
-import { Request, Response } from 'express'
+import { NextFunction, Request, Response } from 'express'
 import Joi from 'joi'
-import { TypeOfSkies } from '../enums/TypeOfSkies'
-import { SkiersService } from '../services/skiers.service'
-import { BaseController } from './base.controller'
+import { TypeOfSki } from '../enums/TypeOfSki'
+import { calculateLengthOfSkiesService } from '../services/skiers.service'
 
-export class SkiersController extends BaseController {
-  private skiersService: SkiersService
+export const getRecommendedSkiLengths = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const schema = Joi.object().keys({
+      lengthCm: Joi.number().integer().min(0).max(300),
+      age: Joi.number().integer().min(0).max(130),
+      typeOfSkies: Joi.string().valid(TypeOfSki.Classic, TypeOfSki.Freestyle)
+    })
 
-  public constructor (skiersService: SkiersService) {
-    super()
-    this.skiersService = skiersService
-  }
+    schema.validate(req.body)
 
-  public getRecommendedSkiLengths = async (req: Request, res: Response) => {
-    try {
-      const schema = Joi.object().keys({
-        lengthCm: Joi.number().integer().min(0).max(300),
-        age: Joi.number().integer().min(0).max(130),
-        typeOfSkies: Joi.string().valid([TypeOfSkies.Classic, TypeOfSkies.Freestyle])
-      })
-
-      schema.validate(req.body)
-
-      const { lengthCm, age, typeOfSkies } = req.body
-      const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = this.skiersService.calculateLengthOfSkiesService(lengthCm, age, typeOfSkies())
-      return res.status(200).json({ recommendedSkiesMinLength, recommendedSkiesMaxLength })
-    } catch (error) {
-      console.log(error) // TODO
-    }
+    const { lengthCm, age, typeOfSki } = req.body
+    const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = calculateLengthOfSkiesService(lengthCm, age, typeOfSki)
+    return res.status(200).json({ recommendedSkiesMinLength, recommendedSkiesMaxLength })
+  } catch (error) {
+    next(error)
+    console.log(error) // TODO
   }
 }

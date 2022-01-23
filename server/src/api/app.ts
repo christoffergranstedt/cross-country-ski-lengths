@@ -1,55 +1,27 @@
-import express, { Request, Response, NextFunction, Application } from 'express'
+import express, { Request, Response, NextFunction } from 'express'
 import cors from 'cors'
+
+import { router as routes } from './routes/routes'
 import { NotFoundError } from './errors'
 import { errorHandler } from './middlewares/errorHandler'
-import { BaseRouter } from './routes/base.router'
 
-export class App {
-  private app: Application
-  private port: number
-  private frontendURL: string
-  private routes: BaseRouter[]
+const frontendURL = process.env.FRONTEND_URL || 'http://localhost:3000'
 
-  constructor (port: number, frontendURL: string, routes: BaseRouter[]) {
-    this.app = express()
-    this.port = port
-    this.frontendURL = frontendURL
-    this.routes = routes
-    this.setRoutes()
-    this.configureApp()
-  }
+export const app = express()
 
-  public run () {
-    try {
-      this.app.listen(this.port, async () => {
-        console.log(`Server running on port ${this.port}`)
-      })
-    } catch (error) {
-      console.log('Something went wrong when connecting to database or server')
-    }
-  }
+app.use(express.json())
 
-  private configureApp () {
-    this.app.use(express.json())
+app.use(cors({ origin: frontendURL }))
+app.use((_req: Request, res: Response, next: NextFunction) => {
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, HEAD, OPTIONS')
+  next()
+})
 
-    this.app.use(cors({ origin: this.frontendURL }))
+app.use('/api', routes)
 
-    this.app.use((_req: Request, res: Response, next: NextFunction) => {
-      res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
-      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, HEAD, OPTIONS')
-      next()
-    })
+app.all('*', async (_req: Request, _res: Response, next: NextFunction) => {
+  next(new NotFoundError())
+})
 
-    this.app.use(errorHandler)
-  }
-
-  private setRoutes () {
-    this.routes.forEach(route => {
-      this.app.use(route.getBasePath, route.getRoutes)
-    })
-
-    this.app.all('*', async (_req: Request, _res: Response, next: NextFunction) => {
-      next(new NotFoundError())
-    })
-  }
-}
+app.use(errorHandler)

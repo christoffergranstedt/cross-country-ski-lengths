@@ -3,6 +3,7 @@ import { CustomError } from '../errors'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const errorHandler: ErrorRequestHandler = (error: Error, _req: Request, res: Response, _next: NextFunction) => {
+  console.log(error)
   if (error instanceof CustomError) {
     return res.status(error.getStatusCode()).send({ errors: error.getErrors() })
   }

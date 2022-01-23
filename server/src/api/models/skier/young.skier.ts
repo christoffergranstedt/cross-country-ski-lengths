@@ -6,11 +6,11 @@ export class YoungSkier extends BaseSkier {
   private static CM_ADDED_FOR_MIN_LENGTH = 10
   private static CM_ADDED_FOR_MAX_LENGTH = 20
 
-  public getRecomendedSkiesMinLengthCm (): number {
+  public getRecommendedSkiesMinLengthCm (): number {
     return this.lengthCm + YoungSkier.CM_ADDED_FOR_MIN_LENGTH
   }
 
-  public getRecomendedSkiesMaxLengthCm (): number {
+  public getRecommendedSkiesMaxLengthCm (): number {
     return this.lengthCm + YoungSkier.CM_ADDED_FOR_MAX_LENGTH
   }
 }

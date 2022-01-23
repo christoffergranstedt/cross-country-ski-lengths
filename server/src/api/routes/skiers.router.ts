@@ -1,13 +1,6 @@
-import { SkiersController } from '../controllers/skiers.controller'
-import { BaseRouter } from './base.router'
+import express from 'express'
+import { getRecommendedSkiLengths } from '../controllers/skiers.controller'
 
-export class SkiersRouter extends BaseRouter {
-  private skiersController: SkiersController
+export const router = express.Router({ mergeParams: true })
 
-  public constructor (basePath: string, skiersController: SkiersController) {
-    super()
-    this.skiersController = skiersController
-    this.basePath = basePath
-    this.router.post('/get-recommended-ski-lengths', this.skiersController.getRecommendedSkiLengths)
-  }
-}
+router.post('/get-recommended-ski-lengths', getRecommendedSkiLengths)
