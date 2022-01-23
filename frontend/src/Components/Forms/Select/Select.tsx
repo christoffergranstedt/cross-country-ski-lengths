@@ -1,23 +1,28 @@
 interface SelectProps {
 	name: string
 	label: string
-	type?: string
 	isError: boolean
-	errorText?: string
+	errorMessage?: string
 	disabled?: boolean
 	register: any
+  options: string[]
+  className?: string
 }
 
-export const Select: React.FC<SelectProps> = ({ name, label, type = 'text', errorText, disabled, isError, register }) => {
+export const Select: React.FC<SelectProps> = ({ className, name, label, errorMessage, disabled, isError, register, options }) => {
   return (
-    <div>
-      <label htmlFor={name}>
+    <div className={`${className}`}>
+      <label className={`${isError && 'text-red-500'} text-left inline-block w-full text-xl mb-1}`} htmlFor={name}>
         {label}
       </label>
-      <input type={type} disabled={disabled} {...register(name)}/>
-      <section>
-        {isError && <p>{errorText}</p>}
-      </section>
+      <select className="w-full h-8 px-3 rounded-sm text-gray-600" disabled={disabled} {...register(name)}>
+        {options.map(value => (
+          <option key={value} value={value}>{value}</option>
+        ))}
+      </select>
+      <div>
+      { isError && <p className="text-red-500 text-lg">{errorMessage}</p>}
+      </div>
     </div>
   )
 }

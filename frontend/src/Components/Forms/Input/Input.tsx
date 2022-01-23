@@ -12,13 +12,13 @@ interface InputProps {
 export const Input = ({ name, className, label, type = 'text', errorMessage, disabled, isError, register }: InputProps) => {
   return (
     <div className={`${className}`}>
-      <label className="text-left inline-block w-36" htmlFor={name}>
+      <label className={`${isError && 'text-red-500'} text-left inline-block w-full text-xl mb-1`} htmlFor={name}>
         {label}
       </label>
-      <input className="w-full h-8 px-3 rounded-md text-gray-600" type={type} disabled={disabled} {...register(name)} step="1"/>
-      <section>
-        {isError && <p>{errorMessage}</p>}
-      </section>
+      <input className={`${isError && 'border-2 border-red-500 focus:outline-none'} w-full h-8 px-3 rounded-sm text-gray-600`} type={type} disabled={disabled} {...register(name)} step="1"/>
+      <div>
+        {isError && <p className="text-red-500 text-lg">{errorMessage}</p>}
+      </div>
     </div>
   )
 }
