@@ -1,5 +1,6 @@
 import React from 'react'
 import { SkiLengthForm } from '../../Components/Forms/SkiLengthForm/SkiLengthForm'
+import { PageHeading } from '../../Components/PageHeading/PageHeading'
 import { SkierInput } from '../../Interfaces/SkierInput'
 
 export const HomePage: React.FC = () => {
@@ -8,7 +9,8 @@ export const HomePage: React.FC = () => {
 	}
 	
 	return (
-		<section className="flex justify-center">
+		<section className="flex justify-center flex-wrap">
+			<PageHeading className="w-full text-center my-6" title="Recommended Ski Length"/>
 			<SkiLengthForm onFormSubmit={onFormSubmit}/>
 		</section>
 	)

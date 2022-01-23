@@ -1,7 +1,7 @@
-import { TypeOfSkies } from '../Constants/TypeOfSkies'
+import { TypeOfSki } from '../Constants/TypeOfSki'
 
 export interface SkierInput {
 	lengthCm: number
 	age: number
-	typeOfSkies: TypeOfSkies
+	typeOfSki: TypeOfSki
 }
