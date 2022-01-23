@@ -11,8 +11,13 @@ export class SkiersController extends BaseController {
   }
 
   public getRecomendedSkiLengths = async (req: Request, res: Response) => {
-    const { lengthCm, age, typeOfSkies } = req.body
-    const { recomendedSkiesMinLength, recomendedSkiesMaxLength } = this.skiersService.calculateLengthOfSkiesService(lengthCm, age, typeOfSkies.toLowerCase())
-    return res.status(200).json({ recomendedSkiesMinLength, recomendedSkiesMaxLength })
+    try {
+      console.log('test')
+      const { lengthCm, age, typeOfSkies } = req.body
+      const { recomendedSkiesMinLength, recomendedSkiesMaxLength } = this.skiersService.calculateLengthOfSkiesService(lengthCm, age, typeOfSkies.toLowerCase())
+      return res.status(200).json({ recomendedSkiesMinLength, recomendedSkiesMaxLength })
+    } catch (error) {
+      console.log(error) // TODO
+    }
   }
 }

@@ -2,15 +2,20 @@ import express, { Request, Response, NextFunction, Application } from 'express'
 import cors from 'cors'
 import { NotFoundError } from './errors'
 import { errorHandler } from './middlewares/errorHandler'
+import { BaseRouter } from './routes/base.router'
+
 export class App {
   private app: Application
   private port: number
   private frontendURL: string
+  private routes: BaseRouter[]
 
-  constructor (port: number, frontendURL: string) {
+  constructor (port: number, frontendURL: string, routes: BaseRouter[]) {
     this.app = express()
     this.port = port
     this.frontendURL = frontendURL
+    this.routes = routes
+    this.setRoutes()
     this.configureApp()
   }
 
@@ -35,12 +40,14 @@ export class App {
       next()
     })
 
-    // this.app.use('/', routes)
+    this.app.use(errorHandler)
+  }
+
+  private setRoutes () {
+    this.app.use('/api')
 
     this.app.all('*', async (_req: Request, _res: Response, next: NextFunction) => {
       next(new NotFoundError())
     })
-
-    this.app.use(errorHandler)
   }
 }
