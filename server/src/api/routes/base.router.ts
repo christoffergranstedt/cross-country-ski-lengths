@@ -8,5 +8,11 @@ export abstract class BaseRouter {
     this.router = express.Router()
   }
 
-  public abstract setRoutes (): void
+  public getRoutes (): Router {
+    return this.router
+  }
+
+  public getBasePath (): string {
+    return this.basePath
+  }
 }

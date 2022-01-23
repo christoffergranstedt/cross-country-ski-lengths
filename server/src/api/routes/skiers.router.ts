@@ -8,9 +8,6 @@ export class SkiersRouter extends BaseRouter {
     super()
     this.skiersController = skiersController
     this.basePath = basePath
-  }
-
-  public setRoutes (): void {
-    this.router.post(`${this.basePath}/get-recomended-ski-lengths`, this.skiersController.getRecomendedSkiLengths)
+    this.router.post('/get-recomended-ski-lengths', this.skiersController.getRecomendedSkiLengths)
   }
 }

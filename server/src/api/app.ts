@@ -44,7 +44,9 @@ export class App {
   }
 
   private setRoutes () {
-    this.app.use('/api')
+    this.routes.forEach(route => {
+      this.app.use(route.getBasePath, route.getRoutes)
+    })
 
     this.app.all('*', async (_req: Request, _res: Response, next: NextFunction) => {
       next(new NotFoundError())
