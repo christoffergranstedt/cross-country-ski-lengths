@@ -1,6 +1,6 @@
 import { TypeOfSki } from '../Constants/TypeOfSki'
 
-export interface SkierInput {
+export type SkierInput = {
 	lengthCm: number
 	age: number
 	typeOfSki: TypeOfSki

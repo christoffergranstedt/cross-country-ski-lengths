@@ -10,7 +10,7 @@ export const HomePage: React.FC = () => {
 	
 	return (
 		<section className="flex justify-center flex-wrap">
-			<PageHeading className="w-full text-center my-6" title="Recommended Ski Length"/>
+			<PageHeading className="w-full text-center my-6" title="Recommended Cross Country Skis Length"/>
 			<SkiLengthForm onFormSubmit={onFormSubmit}/>
 		</section>
 	)
