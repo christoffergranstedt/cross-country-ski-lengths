@@ -1,7 +1,4 @@
-import { TypeOfSki } from '../Constants/TypeOfSki'
+import * as yup from 'yup'
+import { skierInputSchema } from '../Validations/SkierInputValidation';
 
-export type SkierInput = {
-	lengthCm: number
-	age: number
-	typeOfSki: TypeOfSki
-}
+export interface SkierInput extends yup.InferType<typeof skierInputSchema> {}

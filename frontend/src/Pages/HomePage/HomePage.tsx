@@ -1,11 +1,19 @@
 import React from 'react'
 import { SkiLengthForm } from '../../Components/Forms/SkiLengthForm/SkiLengthForm'
 import { PageHeading } from '../../Components/PageHeading/PageHeading'
+import { HTTPMethod } from '../../Constants/HTTPMethod'
+import { useRequest } from '../../Hooks/useRequest'
 import { SkierInput } from '../../Interfaces/SkierInput'
 
 export const HomePage: React.FC = () => {
-	const onFormSubmit = async (skierInput: SkierInput) => {
+	const { sendRequest } = useRequest()
 
+	const onFormSubmit = async (skierInput: SkierInput) => {
+		try {
+			sendRequest({ url: '/api/skiers/get-recommended-ski-lengths', method: HTTPMethod.POST, body: skierInput })
+		} catch (error) {
+			console.log(error) // TODO
+		}
 	}
 	
 	return (
