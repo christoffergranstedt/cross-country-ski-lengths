@@ -12,7 +12,7 @@ export class SkiersController extends BaseController {
     this.skiersService = skiersService
   }
 
-  public getRecomendedSkiLengths = async (req: Request, res: Response) => {
+  public getRecommendedSkiLengths = async (req: Request, res: Response) => {
     try {
       const schema = Joi.object().keys({
         lengthCm: Joi.number().integer().min(0).max(300),
@@ -23,8 +23,8 @@ export class SkiersController extends BaseController {
       schema.validate(req.body)
 
       const { lengthCm, age, typeOfSkies } = req.body
-      const { recomendedSkiesMinLength, recomendedSkiesMaxLength } = this.skiersService.calculateLengthOfSkiesService(lengthCm, age, typeOfSkies())
-      return res.status(200).json({ recomendedSkiesMinLength, recomendedSkiesMaxLength })
+      const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = this.skiersService.calculateLengthOfSkiesService(lengthCm, age, typeOfSkies())
+      return res.status(200).json({ recommendedSkiesMinLength, recommendedSkiesMaxLength })
     } catch (error) {
       console.log(error) // TODO
     }

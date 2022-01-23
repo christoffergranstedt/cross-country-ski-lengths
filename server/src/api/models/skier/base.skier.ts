@@ -22,6 +22,6 @@ export abstract class BaseSkier {
     }
   }
 
-  abstract getRecomendedSkiesMinLengthCm (): number
-  abstract getRecomendedSkiesMaxLengthCm (): number
+  abstract getRecommendedSkiesMinLengthCm (): number
+  abstract getRecommendedSkiesMaxLengthCm (): number
 }

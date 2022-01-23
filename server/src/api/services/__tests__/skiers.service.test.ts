@@ -31,10 +31,10 @@ describe('skiers', () => {
         const age = 0
         const typeOfSkies = TypeOfSkies.Classic
         const expectedSkiLength = skierLengthCm
-        const { recomendedSkiesMinLength, recomendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMinLength).toEqual(expectedSkiLength)
-        expect(recomendedSkiesMaxLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
 
       test('0 years old and freestyle skies should return same recomended skie length as length', () => {
@@ -43,10 +43,10 @@ describe('skiers', () => {
         const age = 0
         const typeOfSkies = TypeOfSkies.Freestyle
         const expectedSkiLength = skierLengthCm
-        const { recomendedSkiesMinLength, recomendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMinLength).toEqual(expectedSkiLength)
-        expect(recomendedSkiesMaxLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
 
       test('4 years old and classic skies should return same recomended skie length as length', () => {
@@ -55,10 +55,10 @@ describe('skiers', () => {
         const age = 4
         const typeOfSkies = TypeOfSkies.Classic
         const expectedSkiLength = skierLengthCm
-        const { recomendedSkiesMinLength, recomendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMinLength).toEqual(expectedSkiLength)
-        expect(recomendedSkiesMaxLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
 
       test('4 years old and freestyle skies should return same recomended skie length as length', () => {
@@ -67,10 +67,10 @@ describe('skiers', () => {
         const age = 4
         const typeOfSkies = TypeOfSkies.Freestyle
         const expectedSkiLength = skierLengthCm
-        const { recomendedSkiesMinLength, recomendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMinLength).toEqual(expectedSkiLength)
-        expect(recomendedSkiesMaxLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
 
       test('5 years old should not return same recomended skie length as length', () => {
@@ -79,10 +79,10 @@ describe('skiers', () => {
         const age = 5
         const typeOfSkies = TypeOfSkies.Freestyle
         const expectedSkiLength = skierLengthCm
-        const { recomendedSkiesMinLength, recomendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMinLength).not.toEqual(expectedSkiLength)
-        expect(recomendedSkiesMaxLength).not.toEqual(expectedSkiLength)
+        expect(recommendedSkiesMinLength).not.toEqual(expectedSkiLength)
+        expect(recommendedSkiesMaxLength).not.toEqual(expectedSkiLength)
       })
     })
 
@@ -93,8 +93,8 @@ describe('skiers', () => {
         const age = 5
         const typeOfSkies = TypeOfSkies.Classic
         const expectedSkiLength = skierLengthCm + 10
-        const { recomendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
-        expect(recomendedSkiesMinLength).toEqual(expectedSkiLength)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
 
       test('5 years old and freestyle skies should return 10 cm more recomended min skie length as length', () => {
@@ -103,9 +103,9 @@ describe('skiers', () => {
         const age = 5
         const typeOfSkies = TypeOfSkies.Freestyle
         const expectedSkiLength = skierLengthCm + 10
-        const { recomendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMinLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
 
       test('5 years old and classic skies should return 20 cm more recomended max skie length as skier length 100', () => {
@@ -114,8 +114,8 @@ describe('skiers', () => {
         const age = 5
         const typeOfSkies = TypeOfSkies.Classic
         const expectedSkiLength = skierLengthCm + 20
-        const { recomendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
-        expect(recomendedSkiesMaxLength).toEqual(expectedSkiLength)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
 
       test('5 years old and freestyle skies should return 20 cm more recomended max skie length as length', () => {
@@ -124,9 +124,9 @@ describe('skiers', () => {
         const age = 5
         const typeOfSkies = TypeOfSkies.Freestyle
         const expectedSkiLength = skierLengthCm + 20
-        const { recomendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMaxLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
       test('8 years old and classic skies should return 10 cm more recomended min skie length as length', () => {
         const skierService = new SkiersService()
@@ -134,8 +134,8 @@ describe('skiers', () => {
         const age = 8
         const typeOfSkies = TypeOfSkies.Classic
         const expectedSkiLength = skierLengthCm + 10
-        const { recomendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
-        expect(recomendedSkiesMinLength).toEqual(expectedSkiLength)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
 
       test('8 years old and freestyle skies should return 10 cm more recomended min skie length as length', () => {
@@ -144,9 +144,9 @@ describe('skiers', () => {
         const age = 8
         const typeOfSkies = TypeOfSkies.Freestyle
         const expectedSkiLength = skierLengthCm + 10
-        const { recomendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMinLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
 
       test('8 years old and classic skies should return 20 cm more recomended max skie length as length', () => {
@@ -155,8 +155,8 @@ describe('skiers', () => {
         const age = 8
         const typeOfSkies = TypeOfSkies.Classic
         const expectedSkiLength = skierLengthCm + 20
-        const { recomendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
-        expect(recomendedSkiesMaxLength).toEqual(expectedSkiLength)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
 
       test('8 years old and freestyle skies should return 20 cm more recomended max skie length as length', () => {
@@ -165,9 +165,9 @@ describe('skiers', () => {
         const age = 8
         const typeOfSkies = TypeOfSkies.Freestyle
         const expectedSkiLength = skierLengthCm + 20
-        const { recomendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMaxLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
     })
 
@@ -178,8 +178,8 @@ describe('skiers', () => {
         const age = 9
         const typeOfSkies = TypeOfSkies.Classic
         const expectedSkiLength = skierLengthCm + 20
-        const { recomendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
-        expect(recomendedSkiesMinLength).toEqual(expectedSkiLength)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
 
       test('9 years old and freestyle skies should return 10 cm more recomended min skie length as length when shorter than max manifactured', () => {
@@ -188,9 +188,9 @@ describe('skiers', () => {
         const age = 9
         const typeOfSkies = TypeOfSkies.Freestyle
         const expectedSkiLength = skierLengthCm + 10
-        const { recomendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMinLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
 
       test('9 years old and classic skies should return 20 cm more recomended max skie length as skier length when shorter than max manifactured', () => {
@@ -199,8 +199,8 @@ describe('skiers', () => {
         const age = 9
         const typeOfSkies = TypeOfSkies.Classic
         const expectedSkiLength = skierLengthCm + 20
-        const { recomendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
-        expect(recomendedSkiesMaxLength).toEqual(expectedSkiLength)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
 
       test('9 years old and freestyle skies should return 15 cm more recomended max skie length as length when shorter than max manifactured', () => {
@@ -209,9 +209,9 @@ describe('skiers', () => {
         const age = 9
         const typeOfSkies = TypeOfSkies.Freestyle
         const expectedSkiLength = skierLengthCm + 15
-        const { recomendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMaxLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
 
       test('100 years old and classic skies should return 20 cm more recomended min skie length as length when shorter than max manifactured', () => {
@@ -220,8 +220,8 @@ describe('skiers', () => {
         const age = 100
         const typeOfSkies = TypeOfSkies.Classic
         const expectedSkiLength = skierLengthCm + 20
-        const { recomendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
-        expect(recomendedSkiesMinLength).toEqual(expectedSkiLength)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
 
       test('100 years old and freestyle skies should return 10 cm more recomended min skie length as length when shorter than max manifactured', () => {
@@ -230,9 +230,9 @@ describe('skiers', () => {
         const age = 100
         const typeOfSkies = TypeOfSkies.Freestyle
         const expectedSkiLength = skierLengthCm + 10
-        const { recomendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMinLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
 
       test('100 years old and classic skies should return 20 cm more recomended max skie length as skier length 100 when shorter than max manifactured', () => {
@@ -241,8 +241,8 @@ describe('skiers', () => {
         const age = 100
         const typeOfSkies = TypeOfSkies.Classic
         const expectedSkiLength = skierLengthCm + 20
-        const { recomendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
-        expect(recomendedSkiesMaxLength).toEqual(expectedSkiLength)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
 
       test('100 years old and freestyle skies should return 15 cm more recomended max skie length as length when shorter than max manifactured', () => {
@@ -251,9 +251,9 @@ describe('skiers', () => {
         const age = 100
         const typeOfSkies = TypeOfSkies.Freestyle
         const expectedSkiLength = skierLengthCm + 15
-        const { recomendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMaxLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
 
       test('Classic skies should return 20 cm more recomended max skie length as length when 186 cm long', () => {
@@ -262,10 +262,10 @@ describe('skiers', () => {
         const age = 100
         const typeOfSkies = TypeOfSkies.Classic
         const expectedSkiLength = skierLengthCm + 20
-        const { recomendedSkiesMinLength, recomendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMinLength).toEqual(expectedSkiLength)
-        expect(recomendedSkiesMaxLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
 
       test('Classic skies should return max manifactured length when skier is 188 cm long', () => {
@@ -274,10 +274,10 @@ describe('skiers', () => {
         const age = 100
         const typeOfSkies = TypeOfSkies.Classic
         const maxManifacturedLength = 207
-        const { recomendedSkiesMinLength, recomendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMinLength).toEqual(maxManifacturedLength)
-        expect(recomendedSkiesMaxLength).toEqual(maxManifacturedLength)
+        expect(recommendedSkiesMinLength).toEqual(maxManifacturedLength)
+        expect(recommendedSkiesMaxLength).toEqual(maxManifacturedLength)
       })
 
       test('Freestyle skies min length should return 10 cm more recomended max skie length as length when 181 cm long', () => {
@@ -286,9 +286,9 @@ describe('skiers', () => {
         const age = 100
         const typeOfSkies = TypeOfSkies.Freestyle
         const expectedSkiLength = skierLengthCm + 10
-        const { recomendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMinLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMinLength).toEqual(expectedSkiLength)
       })
 
       test('Freestyle skies min length should return max manifactured length when skier is 183 cm long', () => {
@@ -297,9 +297,9 @@ describe('skiers', () => {
         const age = 100
         const typeOfSkies = TypeOfSkies.Freestyle
         const maxManifacturedLength = 192
-        const { recomendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMinLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMinLength).toEqual(maxManifacturedLength)
+        expect(recommendedSkiesMinLength).toEqual(maxManifacturedLength)
       })
 
       test('Freestyle skies max length should return 15 cm more recomended max skie length as length when 177 cm long', () => {
@@ -308,9 +308,9 @@ describe('skiers', () => {
         const age = 100
         const typeOfSkies = TypeOfSkies.Freestyle
         const expectedSkiLength = skierLengthCm + 15
-        const { recomendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMaxLength).toEqual(expectedSkiLength)
+        expect(recommendedSkiesMaxLength).toEqual(expectedSkiLength)
       })
 
       test('Freestyle skies max length should return max manifactured length when skier is 179 cm long', () => {
@@ -319,9 +319,9 @@ describe('skiers', () => {
         const age = 100
         const typeOfSkies = TypeOfSkies.Freestyle
         const maxManifacturedLength = 192
-        const { recomendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
+        const { recommendedSkiesMaxLength } = skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSkies)
 
-        expect(recomendedSkiesMaxLength).toEqual(maxManifacturedLength)
+        expect(recommendedSkiesMaxLength).toEqual(maxManifacturedLength)
       })
     })
   })
