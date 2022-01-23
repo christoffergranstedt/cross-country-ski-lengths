@@ -1,4 +1,4 @@
-import { TypeOfSkies } from '../enums/TypeOfSkies'
+import { TypeOfSkies } from '../../enums/TypeOfSkies'
 
 export abstract class BaseSkier {
   protected static MAX_LENGTH_CM_CLASSIC_SKIES = 207
