@@ -8,8 +8,8 @@ export const HomePage: React.FC = () => {
 	}
 	
 	return (
-		<>
+		<section className="flex justify-center">
 			<SkiLengthForm onFormSubmit={onFormSubmit}/>
-		</>
+		</section>
 	)
 }
