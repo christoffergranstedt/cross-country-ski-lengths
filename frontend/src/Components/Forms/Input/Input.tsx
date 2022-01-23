@@ -1,22 +1,23 @@
 interface InputProps {
 	name: string
+  className?: string
 	label: string
 	type?: string
-	isError: boolean
 	errorText?: string
 	disabled?: boolean
+	error?: string
 	register: any
 }
 
-export const Input: React.FC<InputProps> = ({ name, label, type = 'text', errorText, disabled, isError, register }) => {
+export const Input = ({ name, className, label, type = 'text', errorText, disabled, error, register }: InputProps) => {
   return (
-    <div>
-      <label htmlFor={name}>
+    <div className={`${className}`}>
+      <label className="text-left inline-block w-24" htmlFor={name}>
         {label}
       </label>
-      <input type={type} disabled={disabled} {...register(name)}/>
+      <input className="w-full h-8 px-3 rounded-md text-gray-600 focus:ring-2 focus:ring-red-600" type={type} disabled={disabled} {...register(name)}/>
       <section>
-        {isError && <p>{errorText}</p>}
+        {error && <p>{errorText}</p>}
       </section>
     </div>
   )
