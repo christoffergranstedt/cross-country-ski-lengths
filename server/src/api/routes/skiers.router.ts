@@ -1,5 +1,5 @@
-import { SkiersController } from '../controllers/skiers.controller';
-import { BaseRouter } from './base.router';
+import { SkiersController } from '../controllers/skiers.controller'
+import { BaseRouter } from './base.router'
 
 export abstract class SkierRouter extends BaseRouter {
   private skiersController: SkiersController
@@ -13,5 +13,4 @@ export abstract class SkierRouter extends BaseRouter {
   public setRoutes (): void {
     this.router.post('/get-recomended-ski-lengths', this.skiersController.getRecomendedSkiLengths)
   }
-
 }

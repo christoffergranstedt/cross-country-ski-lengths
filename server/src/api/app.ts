@@ -1,8 +1,7 @@
-import express, { Request, Response, NextFunction, Application  } from 'express'
+import express, { Request, Response, NextFunction, Application } from 'express'
 import cors from 'cors'
 import { NotFoundError } from './errors'
 import { errorHandler } from './middlewares/errorHandler'
-
 
 export class App {
   private app: Application
@@ -30,19 +29,19 @@ export class App {
     this.app.use(express.json())
 
     this.app.use(cors({ origin: this.frontendURL }))
-    
+
     this.app.use((_req: Request, res: Response, next: NextFunction) => {
       res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
       res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, HEAD, OPTIONS')
       next()
     })
-    
+
     // this.app.use('/', routes)
-    
+
     this.app.all('*', async (_req: Request, _res: Response, next: NextFunction) => {
       next(new NotFoundError())
     })
-    
+
     this.app.use(errorHandler)
   }
 }

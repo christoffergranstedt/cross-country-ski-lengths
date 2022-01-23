@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { SkiesService } from '../services/skies.services'
 
-export class SkiersController  {
+export class SkiersController {
   private skiesService: SkiesService
 
   public constructor (skiesService: SkiesService) {
