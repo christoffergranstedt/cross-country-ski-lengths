@@ -2,14 +2,17 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
-import { app } from './app'
+import { App } from './app'
+import { Controller } from './controllers/base.controller'
+import { SkiersController } from './controllers/skiers.controller'
+import { SkiersService } from './services/skiers.service'
 
 const port = Number(process.env.PORT) || 9000
+const frontendURL = process.env.FRONTEND_URL || 'http://localhost:3000'
 
-try {
-  app.listen(port, async () => {
-    console.log(`Server running on port ${port}`)
-  })
-} catch (error) {
-  console.log('Something went wrong when connecting to database or server')
-}
+const controllers: Controller[] = [
+  new SkiersController(new SkiersService())
+]
+
+const app = new App(port, frontendURL, controllers)
+app.run()
