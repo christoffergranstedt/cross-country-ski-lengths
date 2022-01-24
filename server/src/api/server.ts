@@ -2,7 +2,7 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
-import { App } from './app'
+import { App } from './App'
 import { Controller } from './controllers/Controller'
 import { SkiersController } from './controllers/SkiersController'
 import { SkiersService } from './services/SkiersService'
