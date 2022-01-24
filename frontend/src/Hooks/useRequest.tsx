@@ -10,7 +10,7 @@ interface UseRequestProps {
 }
 
 export const useRequest = () => {
-  const sendRequest = React.useCallback(async ({ url, method, body }: UseRequestProps) => {
+  const sendRequest = React.useCallback(async ({ url, method, body }: UseRequestProps)=> {
     try {
 			if (!process.env.REACT_APP_BACKEND_URL) throw new Error('No REACT_APP_BACKEND_URL environment variable is provided')
 
