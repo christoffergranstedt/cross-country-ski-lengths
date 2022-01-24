@@ -1,41 +1,25 @@
 import { Request, Response } from 'express'
-import Joi from 'joi'
-import { TypeOfSki } from '../enums/TypeOfSki'
 import { SkiersService } from '../services/skiers.service'
+import { SkiersValidator } from '../validations/SkiersValidator'
 import { Controller } from './base.controller'
 
 export class SkiersController extends Controller {
   private skiersService: SkiersService
+  private skiersValidator: SkiersValidator
 
-  public constructor (skiersService: SkiersService) {
+  public constructor (skiersService: SkiersService, skiersValidator: SkiersValidator) {
     super()
     this.skiersService = skiersService
+    this.skiersValidator = skiersValidator
   }
 
   public setRoutes () {
-    this.router.post('/api/skiers/get-recommended-ski-lengths', this.getRecommendedSkiLengths.bind(this))
-  }
-
-  public getRouter () {
-    return this.router
+    this.router.post('/api/skiers/get-recommended-ski-lengths', this.skiersValidator.getRecommendedSkiLengthsInputSchema(), this.skiersValidator.validate, this.getRecommendedSkiLengths.bind(this))
   }
 
   public async getRecommendedSkiLengths (req: Request, res: Response) {
-    try {
-      const schema = Joi.object().keys({
-        lengthCm: Joi.number().integer().min(0).max(300).required(),
-        age: Joi.number().integer().min(0).max(130).required(),
-        typeOfSkies: Joi.string().valid(TypeOfSki.Classic, TypeOfSki.Freestyle).required()
-      })
-
-      const test = schema.validate(req.body)
-      console.log(test) // TODO
-
-      const { lengthCm, age, typeOfSkies } = req.body
-      const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = this.skiersService.calculateLengthOfSkiesService(lengthCm, age, typeOfSkies)
-      return res.status(200).json({ recommendedSkiesMinLength, recommendedSkiesMaxLength })
-    } catch (error) {
-      console.log(error) // TODO
-    }
+    const { lengthCm, age, typeOfSkies } = req.body
+    const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = this.skiersService.calculateLengthOfSkiesService(lengthCm, age, typeOfSkies)
+    return res.status(200).json({ recommendedSkiesMinLength, recommendedSkiesMaxLength })
   }
 }

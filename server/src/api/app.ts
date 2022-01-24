@@ -2,8 +2,7 @@ import express, { Request, Response, NextFunction, Application } from 'express'
 import cors from 'cors'
 import logger from 'morgan'
 
-import { NotFoundError } from './errors'
-import { errorHandler } from './middlewares/errorHandler'
+import { CustomError, NotFoundError } from './errors'
 import { Controller } from './controllers/base.controller'
 
 export class App {
@@ -52,6 +51,7 @@ export class App {
 
   private initControllersAndRoutes (): void {
     this.controllers.forEach(controller => {
+      controller.setRoutes()
       this.app.use('/', controller.getRouter())
     })
   }
@@ -60,6 +60,16 @@ export class App {
     this.app.all('*', async (_req: Request, _res: Response, next: NextFunction) => {
       next(new NotFoundError())
     })
-    this.app.use(errorHandler)
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    this.app.use((error: Error, _req: Request, res: Response, _next: NextFunction) => {
+      if (error instanceof CustomError) {
+        return res.status(error.getStatusCode()).send({ errors: error.getErrors() })
+      }
+
+      return res.status(500).send({
+        errors: [{ message: 'Something went wrong in the server, please try again' }]
+      })
+    })
   }
 }

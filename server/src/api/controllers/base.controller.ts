@@ -5,9 +5,11 @@ export abstract class Controller {
 
   public constructor () {
     this.router = Router()
-    this.setRoutes()
   }
 
   public abstract setRoutes (): void
-  public abstract getRouter (): Router
+
+  public getRouter (): Router {
+    return this.router
+  }
 }

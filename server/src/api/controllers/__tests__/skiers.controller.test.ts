@@ -2,6 +2,7 @@ import { Application } from 'express'
 import request from 'supertest'
 import { App } from '../../app'
 import { SkiersService } from '../../services/skiers.service'
+import { SkiersValidator } from '../../validations/SkiersValidator'
 import { Controller } from '../base.controller'
 import { SkiersController } from '../skiers.controller'
 
@@ -12,7 +13,7 @@ describe('skiers-controller', () => {
     const port = Number(process.env.PORT) || 9000
     const frontendURL = process.env.FRONTEND_URL || 'http://localhost:3000'
     const controllers: Controller[] = [
-      new SkiersController(new SkiersService())
+      new SkiersController(new SkiersService(), new SkiersValidator())
     ]
     app = new App(port, frontendURL, controllers).getApp()
   })
