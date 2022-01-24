@@ -22,17 +22,21 @@ export class App {
     this.initErrorHandler()
   }
 
-  public run () {
+  public run (): void {
     try {
       this.app.listen(this.port, async () => {
         console.log(`Server running on port ${this.port}`)
       })
     } catch (error) {
-      console.log('Something went wrong when connecting to database or server')
+      console.log('Something went wrong when connecting to server')
     }
   }
 
-  private initialiseMiddlewares () {
+  public getApp (): Application {
+    return this.app
+  }
+
+  private initialiseMiddlewares (): void {
     this.app.use(express.json())
 
     this.app.use(logger('dev'))
@@ -46,13 +50,13 @@ export class App {
     })
   }
 
-  private initControllersAndRoutes () {
+  private initControllersAndRoutes (): void {
     this.controllers.forEach(controller => {
       this.app.use('/', controller.getRouter())
     })
   }
 
-  private initErrorHandler () {
+  private initErrorHandler (): void {
     this.app.all('*', async (_req: Request, _res: Response, next: NextFunction) => {
       next(new NotFoundError())
     })

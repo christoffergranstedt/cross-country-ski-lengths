@@ -1,4 +1,4 @@
-import express, { Request, Response, Router } from 'express'
+import { Request, Response } from 'express'
 import Joi from 'joi'
 import { TypeOfSki } from '../enums/TypeOfSki'
 import { SkiersService } from '../services/skiers.service'
@@ -6,13 +6,10 @@ import { Controller } from './base.controller'
 
 export class SkiersController extends Controller {
   private skiersService: SkiersService
-  private router: Router
 
   public constructor (skiersService: SkiersService) {
     super()
     this.skiersService = skiersService
-    this.router = express.Router()
-    this.setRoutes()
   }
 
   public setRoutes () {
@@ -26,12 +23,13 @@ export class SkiersController extends Controller {
   public async getRecommendedSkiLengths (req: Request, res: Response) {
     try {
       const schema = Joi.object().keys({
-        lengthCm: Joi.number().integer().min(0).max(300),
-        age: Joi.number().integer().min(0).max(130),
-        typeOfSkies: Joi.string().valid(TypeOfSki.Classic, TypeOfSki.Freestyle)
+        lengthCm: Joi.number().integer().min(0).max(300).required(),
+        age: Joi.number().integer().min(0).max(130).required(),
+        typeOfSkies: Joi.string().valid(TypeOfSki.Classic, TypeOfSki.Freestyle).required()
       })
 
-      schema.validate(req.body)
+      const test = schema.validate(req.body)
+      console.log(test) // TODO
 
       const { lengthCm, age, typeOfSkies } = req.body
       const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = this.skiersService.calculateLengthOfSkiesService(lengthCm, age, typeOfSkies)
