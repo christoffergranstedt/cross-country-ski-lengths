@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { validationResult } from 'express-validator'
+
 import { InputValidationError } from '../errors/InputValidationError'
 import { ErrorResponse } from '../interfaces/ErrorResponse'
 

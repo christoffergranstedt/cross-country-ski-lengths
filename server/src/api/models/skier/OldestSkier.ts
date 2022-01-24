@@ -1,5 +1,5 @@
 import { TypeOfSki } from '../../enums/TypeOfSki'
-import { BaseSkier } from './base.skier'
+import { BaseSkier } from './Skier'
 
 export class OldestSkier extends BaseSkier {
   public static MIN_AGE = 9

@@ -1,10 +1,11 @@
 import { Application } from 'express'
 import request from 'supertest'
+
 import { App } from '../../app'
-import { SkiersService } from '../../services/skiers.service'
+import { SkiersService } from '../../services/SkiersService'
 import { SkiersValidator } from '../../validations/SkiersValidator'
-import { Controller } from '../base.controller'
-import { SkiersController } from '../skiers.controller'
+import { Controller } from '../Controller'
+import { SkiersController } from '../SkiersController'
 
 describe('skiers-controller', () => {
   let app: Application

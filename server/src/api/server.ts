@@ -3,9 +3,9 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 import { App } from './app'
-import { Controller } from './controllers/base.controller'
-import { SkiersController } from './controllers/skiers.controller'
-import { SkiersService } from './services/skiers.service'
+import { Controller } from './controllers/Controller'
+import { SkiersController } from './controllers/SkiersController'
+import { SkiersService } from './services/SkiersService'
 import { SkiersValidator } from './validations/SkiersValidator'
 
 const port = Number(process.env.PORT) || 9000

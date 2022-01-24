@@ -3,7 +3,7 @@ import cors from 'cors'
 import logger from 'morgan'
 
 import { CustomError, NotFoundError } from './errors'
-import { Controller } from './controllers/base.controller'
+import { Controller } from './controllers/Controller'
 
 export class App {
   private app: Application

@@ -1,6 +1,6 @@
 import { TypeOfSki } from '../../enums/TypeOfSki'
 import { InputValidationError } from '../../errors/InputValidationError'
-import { SkiersService } from '../skiers.service'
+import { SkiersService } from '../SkiersService'
 
 describe('skiers', () => {
   describe('skie-length', () => {

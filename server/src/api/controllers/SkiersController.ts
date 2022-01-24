@@ -1,7 +1,8 @@
 import { Request, Response } from 'express'
-import { SkiersService } from '../services/skiers.service'
+
+import { SkiersService } from '../services/SkiersService'
 import { SkiersValidator } from '../validations/SkiersValidator'
-import { Controller } from './base.controller'
+import { Controller } from './Controller'
 
 export class SkiersController extends Controller {
   private skiersService: SkiersService

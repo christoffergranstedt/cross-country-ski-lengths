@@ -1,8 +1,8 @@
 import { TypeOfSki } from '../enums/TypeOfSki'
 import { InputValidationError } from '../errors/InputValidationError'
-import { OldestSkier } from '../models/skier/oldest.skier'
-import { YoungSkier } from '../models/skier/young.skier'
-import { YoungestSkier } from '../models/skier/youngest.skier'
+import { OldestSkier } from '../models/skier/OldestSkier'
+import { YoungestSkier } from '../models/skier/YoungestSkier'
+import { YoungSkier } from '../models/skier/YoungSkier'
 
 export class SkiersService {
   public calculateLengthOfSkiesService = ((lengthCm: number, age: number, typeOfSki: TypeOfSki): { recommendedSkiesMinLength: number, recommendedSkiesMaxLength: number } => {

@@ -1,4 +1,4 @@
-import { BaseSkier } from './base.skier'
+import { BaseSkier } from './Skier'
 
 export class YoungSkier extends BaseSkier {
   public static MIN_AGE = 5
