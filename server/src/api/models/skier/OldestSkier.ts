@@ -7,7 +7,7 @@ export class OldestSkier extends BaseSkier {
   private static MIN_CM_ADDED_FREESTYLE = 10
   private static MAX_CM_ADDED_FREESTYLE = 15
 
-  public getRecommendedSkiesMinLengthCm (): number {
+  public getRecommendedSkiesMinLengthCm = (): number => {
     if (this.typeOfSkies === TypeOfSki.Classic) {
       const calculatedLength = this.lengthCm + OldestSkier.CM_ADDED_CLASSIC
       return this.isLengthSmallerMaxManifactured(this.typeOfSkies, calculatedLength) ? calculatedLength : BaseSkier.MAX_LENGTH_CM_CLASSIC_SKIES
@@ -17,7 +17,7 @@ export class OldestSkier extends BaseSkier {
     }
   }
 
-  public getRecommendedSkiesMaxLengthCm (): number {
+  public getRecommendedSkiesMaxLengthCm = (): number => {
     if (this.typeOfSkies === TypeOfSki.Classic) {
       const calculatedLength = this.lengthCm + OldestSkier.CM_ADDED_CLASSIC
       return this.isLengthSmallerMaxManifactured(this.typeOfSkies, calculatedLength) ? calculatedLength : BaseSkier.MAX_LENGTH_CM_CLASSIC_SKIES

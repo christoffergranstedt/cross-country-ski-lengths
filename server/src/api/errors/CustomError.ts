@@ -9,7 +9,7 @@ export class CustomError extends Error {
     this.statusCode = statusCode
   }
 
-  public getErrors (): ErrorResponse[] {
+  public getErrors = (): ErrorResponse[] => {
     if (this.messages) {
       return this.messages
     } else {
@@ -17,11 +17,11 @@ export class CustomError extends Error {
     }
   }
 
-  public setErrorMessages (messages: ErrorResponse[]): void {
+  public setErrorMessages = (messages: ErrorResponse[]): void => {
     this.messages = messages
   }
 
-  getStatusCode (): number {
+  getStatusCode = (): number => {
     return this.statusCode
   }
 }

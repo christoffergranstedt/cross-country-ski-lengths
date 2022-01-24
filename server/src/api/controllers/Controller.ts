@@ -9,7 +9,7 @@ export abstract class Controller {
 
   public abstract setRoutes (): void
 
-  public getRouter (): Router {
+  public getRouter = (): Router => {
     return this.router
   }
 }

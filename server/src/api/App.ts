@@ -16,7 +16,7 @@ export class App {
     this.port = port
     this.frontendURL = frontendURL
     this.controllers = controllers
-    this.initialiseMiddlewares()
+    this.initMiddlewares()
     this.initControllersAndRoutes()
     this.initErrorHandler()
   }
@@ -31,11 +31,11 @@ export class App {
     }
   }
 
-  public getApp (): Application {
+  public getApp = (): Application => {
     return this.app
   }
 
-  private initialiseMiddlewares (): void {
+  private initMiddlewares = (): void => {
     this.app.use(express.json())
 
     this.app.use(logger('dev'))
@@ -49,14 +49,14 @@ export class App {
     })
   }
 
-  private initControllersAndRoutes (): void {
+  private initControllersAndRoutes = (): void => {
     this.controllers.forEach(controller => {
       controller.setRoutes()
       this.app.use('/', controller.getRouter())
     })
   }
 
-  private initErrorHandler (): void {
+  private initErrorHandler = (): void => {
     this.app.all('*', async (_req: Request, _res: Response, next: NextFunction) => {
       next(new NotFoundError())
     })

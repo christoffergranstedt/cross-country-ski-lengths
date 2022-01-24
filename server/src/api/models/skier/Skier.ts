@@ -14,7 +14,7 @@ export abstract class BaseSkier {
     this.typeOfSkies = typeOfSkies
   }
 
-  protected isLengthSmallerMaxManifactured (typeOfSkies: TypeOfSki, calculatedLengthCm: number) {
+  protected isLengthSmallerMaxManifactured = (typeOfSkies: TypeOfSki, calculatedLengthCm: number): boolean => {
     if (typeOfSkies === TypeOfSki.Classic) {
       return calculatedLengthCm < BaseSkier.MAX_LENGTH_CM_CLASSIC_SKIES
     } else {
