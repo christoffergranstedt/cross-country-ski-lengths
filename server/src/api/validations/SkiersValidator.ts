@@ -8,7 +8,7 @@ export class SkiersValidator extends Validator {
   public getRecommendedSkiLengthsInputSchema = (): ValidationChain[] => {
     return [
       body(InputGetRecommendedSkiLength.lengthCm)
-        .isInt({ min: 0, max: 300 }).withMessage('Skier length has to be between 0 and 300'),
+        .isInt({ min: 0, max: 300 }).withMessage('Skier length in cm has to be between 0 and 300'),
       body(InputGetRecommendedSkiLength.age)
         .isInt({ min: 0, max: 130 }).withMessage('Skier age has to be between 0 and 130'),
       body(InputGetRecommendedSkiLength.typeOfSki)
