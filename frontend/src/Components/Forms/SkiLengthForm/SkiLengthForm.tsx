@@ -16,17 +16,17 @@ interface SkiLengthProps {
 
 export const SkiLengthForm: React.FC<SkiLengthProps> = ({ className, onFormSubmit }) => {
 	const { register, handleSubmit, formState  } = useForm<SkierInput>({ 
-		mode: 'onChange',
+		mode: 'onBlur',
 		resolver: yupResolver(skierInputSchema)
 	})
-	console.log(formState)
 	const { errors } = formState
 
 	const onSubmit = (data: SkierInput) => {
     onFormSubmit(data)
 	}
-	
 
+	console.log(!formState.isValid)
+	
   return (
     <form className={`${className || ''}`} onSubmit={handleSubmit(onSubmit)}>
 			<Input 

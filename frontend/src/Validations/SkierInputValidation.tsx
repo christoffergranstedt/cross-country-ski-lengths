@@ -1,18 +1,23 @@
 import * as yup from 'yup'
 import { TypeOfSki } from '../Constants/TypeOfSki'
 
+const MIN_AGE = 0
+const MAX_AGE = 130
+const MIN_LENGTH = 40
+const MAX_LENGTH = 300
+
 export const skierInputSchema = yup.object({
   lengthCm: yup.number()
   .typeError('It has to be a number')
   .integer('It has to be an integer')
-  .min(0, 'Minimum 0 cm is accepted')
-  .max(300, 'Maximum 300 cm is accepted')
+  .min(MIN_LENGTH, `Minimum ${MIN_LENGTH} cm is accpeted`)
+  .max(MAX_LENGTH, `Maximum ${MAX_LENGTH} cm is accpeted`)
   .required('This field is required'),
   age: yup.number()
   .typeError('It has to be a number')
   .integer('It has to be an integer')
-  .min(0, 'Minimum 0 years is accepted')
-  .max(130, 'Maximum 130 years is accepted')
+  .min(MIN_AGE, `Minimum ${MIN_AGE} years is accpeted`)
+  .max(MAX_AGE, `Maximum ${MAX_AGE} years is accpeted`)
   .required('This field is required'),
 	typeOfSki: yup.string()
     .typeError('It has to be a string')

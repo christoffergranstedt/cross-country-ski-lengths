@@ -15,7 +15,7 @@ export const Select: React.FC<SelectProps> = ({ className, name, label, errorMes
       <label className={`${isError && 'text-red-500'} text-left inline-block w-full text-xl mb-1}`} htmlFor={name}>
         {label}
       </label>
-      <select className="w-full h-8 px-3 rounded-sm text-gray-600" disabled={disabled} {...register(name)}>
+      <select className="w-full h-8 px-3 rounded-sm text-gray-600" disabled={disabled} {...register(name)} id={name}>
         {options.map(value => (
           <option key={value} value={value}>{value}</option>
         ))}
