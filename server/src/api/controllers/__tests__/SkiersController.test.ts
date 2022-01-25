@@ -2,6 +2,10 @@ import { Application } from 'express'
 import request from 'supertest'
 
 import { App } from '../../app'
+import { OldestAgeClassicRule } from '../../models/skier/rules/AgeRules/Oldest/OldestAgeClassicRule'
+import { OldestAgeFreestyleRule } from '../../models/skier/rules/AgeRules/Oldest/OldestAgeFreestyleRule'
+import { YoungAgeRule } from '../../models/skier/rules/AgeRules/Young/YoungAgeRule'
+import { YoungestAgeRule } from '../../models/skier/rules/AgeRules/Youngest/YoungestAgeRule'
 import { SkiersService } from '../../services/SkiersService'
 import { SkiersValidator } from '../../validations/SkiersValidator'
 import { Controller } from '../Controller'
@@ -13,8 +17,9 @@ describe('skiers-controller', () => {
   beforeAll(() => {
     const port = Number(process.env.PORT) || 9000
     const frontendURL = process.env.FRONTEND_URL || 'http://localhost:3000'
+    const ageRules = [new OldestAgeClassicRule(), new OldestAgeFreestyleRule(), new YoungAgeRule(), new YoungestAgeRule()]
     const controllers: Controller[] = [
-      new SkiersController(new SkiersService(), new SkiersValidator())
+      new SkiersController(new SkiersService(ageRules), new SkiersValidator())
     ]
     app = new App(port, frontendURL, controllers).getApp()
   })
@@ -87,7 +92,7 @@ describe('skiers-controller', () => {
     test('responds with a 200 status code and recomended min ski length of 160 and max length of 165 when freestyle, 50 years old and 150 cm long', done => {
       request(app)
         .post(getRecommendedSkiLengthsPath)
-        .send({ lengthCm: 150, age: 50, typeOfSki: 'classic' })
+        .send({ lengthCm: 150, age: 50, typeOfSki: 'freestyle' })
         .expect(200)
         .end(function (err, res) {
           if (err) return done(err)
