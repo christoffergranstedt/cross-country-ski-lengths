@@ -5,14 +5,20 @@ import logger from 'morgan'
 import { CustomError, NotFoundError } from './errors'
 import { Controller } from './controllers/Controller'
 
+interface AppArgs {
+  port: number
+  frontendURL: string
+  controllers: Controller[]
+}
+
 export class App {
-  private app: Application
+  private _app: Application
   private port: number
   private frontendURL: string
   private controllers: Controller[]
 
-  constructor (port: number, frontendURL: string, controllers: Controller[]) {
-    this.app = express()
+  constructor ({ port, frontendURL, controllers }: AppArgs) {
+    this._app = express()
     this.port = port
     this.frontendURL = frontendURL
     this.controllers = controllers
@@ -31,8 +37,8 @@ export class App {
     }
   }
 
-  public getApp = (): Application => {
-    return this.app
+  public get app (): Application {
+    return this._app
   }
 
   private initMiddlewares = (): void => {

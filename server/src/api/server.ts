@@ -21,5 +21,5 @@ const controllers: Controller[] = [
   new SkiersController(new SkiersService(ageRules), new SkiersValidator())
 ]
 
-const app = new App(port, frontendURL, controllers)
+const app = new App({ port, frontendURL, controllers })
 app.run()

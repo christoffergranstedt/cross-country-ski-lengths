@@ -21,7 +21,7 @@ describe('skiers-controller', () => {
     const controllers: Controller[] = [
       new SkiersController(new SkiersService(ageRules), new SkiersValidator())
     ]
-    app = new App(port, frontendURL, controllers).getApp()
+    app = new App({ port, frontendURL, controllers }).app
   })
 
   const getRecommendedSkiLengthsPath = '/api/skiers/get-recommended-ski-lengths'
