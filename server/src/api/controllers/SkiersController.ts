@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import { InputGetRecommendedSkiLengthBody } from '../interfaces/InputGetRecommendedSkiLengthBody'
 
 import { SkiersService } from '../services/SkiersService'
 import { SkiersValidator } from '../validations/SkiersValidator'
@@ -19,8 +20,8 @@ export class SkiersController extends Controller {
   }
 
   public getRecommendedSkiLengths = (req: Request, res: Response) => {
-    const { lengthCm, age, typeOfSkies } = req.body
-    const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = this.skiersService.calculateLengthOfSkiesService(lengthCm, age, typeOfSkies)
+    const { lengthCm, age, typeOfSki } = req.body as InputGetRecommendedSkiLengthBody
+    const { recommendedSkiesMinLength, recommendedSkiesMaxLength } = this.skiersService.calculateLengthOfSkiesService(lengthCm, age, typeOfSki)
     return res.status(200).json({ data: { recommendedSkiesMinLength, recommendedSkiesMaxLength } })
   }
 }

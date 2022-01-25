@@ -15,6 +15,46 @@ describe('skiers', () => {
         }).toThrow(InputValidationError)
       })
 
+      test('-1 length cm old should return an error', () => {
+        const skierService = new SkiersService()
+        const skierLengthCm = -1
+        const age = 50
+        const typeOfSki = TypeOfSki.Classic
+        expect(() => {
+          skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
+        }).toThrow(InputValidationError)
+      })
+
+      test('No length provided should return an error', () => {
+        const skierService = new SkiersService()
+        const skierLengthCm: number = null
+        const age = 50
+        const typeOfSki = TypeOfSki.Classic
+        expect(() => {
+          skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
+        }).toThrow(InputValidationError)
+      })
+
+      test('No age provided should return an error', () => {
+        const skierService = new SkiersService()
+        const skierLengthCm = 50
+        const age: number = null
+        const typeOfSki = TypeOfSki.Classic
+        expect(() => {
+          skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
+        }).toThrow(InputValidationError)
+      })
+
+      test('No type of ski provided should return an error', () => {
+        const skierService = new SkiersService()
+        const skierLengthCm = 50
+        const age = 50
+        const typeOfSki: TypeOfSki = null
+        expect(() => {
+          skierService.calculateLengthOfSkiesService(skierLengthCm, age, typeOfSki)
+        }).toThrow(InputValidationError)
+      })
+
       test('0 years old and classic skies should return same recomended skie length as length', () => {
         const skierService = new SkiersService()
         const skierLengthCm = 50

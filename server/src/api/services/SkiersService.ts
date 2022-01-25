@@ -1,13 +1,22 @@
 import { TypeOfSki } from '../enums/TypeOfSki'
 import { InputValidationError } from '../errors/InputValidationError'
 import { OldestSkier } from '../models/skier/OldestSkier'
+import { BaseSkier } from '../models/skier/Skier'
 import { YoungestSkier } from '../models/skier/YoungestSkier'
 import { YoungSkier } from '../models/skier/YoungSkier'
 
 export class SkiersService {
   public calculateLengthOfSkiesService = ((lengthCm: number, age: number, typeOfSki: TypeOfSki): { recommendedSkiesMinLength: number, recommendedSkiesMaxLength: number } => {
-    if (age < YoungestSkier.MIN_AGE) {
-      throw new InputValidationError([{ message: 'Someone can not be younger than 0 years old' }])
+    if (!age || age < BaseSkier.MIN_AGE || age > BaseSkier.MAX_AGE) {
+      throw new InputValidationError([{ message: `Skier has to be between ${BaseSkier.MIN_AGE} and ${BaseSkier.MAX_AGE} years old` }])
+    }
+
+    if (!lengthCm || lengthCm < BaseSkier.MIN_LENGTH || lengthCm > BaseSkier.MAX_LENGTH) {
+      throw new InputValidationError([{ message: `Skier has to be between ${BaseSkier.MIN_LENGTH} and ${BaseSkier.MAX_LENGTH} cm` }])
+    }
+
+    if (!typeOfSki || (typeOfSki !== TypeOfSki.Classic && typeOfSki !== TypeOfSki.Freestyle)) {
+      throw new InputValidationError([{ message: `Skies has to be either ${TypeOfSki.Classic} or ${TypeOfSki.Freestyle}` }])
     }
 
     let recommendedSkiesMinLength = 0
