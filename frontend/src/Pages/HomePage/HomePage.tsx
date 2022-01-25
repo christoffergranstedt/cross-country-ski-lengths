@@ -28,13 +28,13 @@ export const HomePage: React.FC = () => {
 	return (
 		<section className="flex justify-center flex-wrap">
 			<div className="rounded-xl mt-4 sm:mt-12 xl:mt-32">
-				<div className="text-center rounded-t-xl bg-green-400 text-gray-800 px-2 sm:px-8 xl:px-24">
+				<div className="text-center rounded-t-xl bg-green-400 text-gray-800 px-2 sm:px-12 md:px-20 xl:px-24">
 					<PageHeading className="w-full py-4" title="Recommended Cross Country Skis Length"/>
 				</div>
 				<div className="border-l-2 border-r-2 border-b-2 border-white rounded-b-xl px-6">
 					<SkiLengthForm className="pt-8" onFormSubmit={onFormSubmit}/>
-					<div className="h-22">
-						<p className="text-green-400 text-2xl w-full my-8 h-8">{recommendedSkiLength}</p>
+					<div className="min-h-22">
+						<p className="text-green-400 text-md sm:text-xl md:text-2xl w-full my-8 min-h-8">{recommendedSkiLength}</p>
 					</div>
 				</div>
 			</div>

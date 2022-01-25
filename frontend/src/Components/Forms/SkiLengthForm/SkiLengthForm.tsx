@@ -56,7 +56,8 @@ export const SkiLengthForm: React.FC<SkiLengthProps> = ({ className, onFormSubmi
 				options={[TypeOfSki.Classic, TypeOfSki.Freestyle]}
 			/>
 			<Button 
-				className="border-2 border-green-400 rounded-md my-4 py-2 px-4 cursor-pointer text-xl disabled:border-gray-600 disabled:bg-gray-800 hover:bg-green-400" disabled={!formState.isValid}>Get recommended ski length</Button>
+				className="border-2 border-green-400 rounded-md my-4 py-2 px-4 cursor-pointer text-sm sm:text-lg m:text-xl disabled:border-gray-600 disabled:bg-gray-800 hover:bg-green-400" 
+				disabled={!formState.isValid}>Get recommended ski length</Button>
 		</form>
   )
 }
