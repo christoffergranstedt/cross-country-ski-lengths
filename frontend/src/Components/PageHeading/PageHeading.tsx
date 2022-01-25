@@ -5,6 +5,6 @@ interface PageHeadingProps {
 
 export const PageHeading: React.FC<PageHeadingProps> = ({className, title}) => {
   return (
-    <h1 className={`${className} text-4xl font-semibold`}>{title}</h1>
+    <h1 className={`${className} text-md xl:text-3xl font-semibold`}>{title}</h1>
   )
 }

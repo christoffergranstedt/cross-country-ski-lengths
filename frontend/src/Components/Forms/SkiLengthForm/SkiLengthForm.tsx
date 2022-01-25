@@ -17,25 +17,46 @@ interface SkiLengthProps {
 export const SkiLengthForm: React.FC<SkiLengthProps> = ({ className, onFormSubmit }) => {
 	const { register, handleSubmit, formState  } = useForm<SkierInput>({ 
 		mode: 'onChange',
-		resolver: yupResolver(skierInputSchema),
-		defaultValues: {
-			lengthCm: 0,
-			age: 0,
-			typeOfSki: TypeOfSki.Classic
-		}
+		resolver: yupResolver(skierInputSchema)
 	})
+	console.log(formState)
 	const { errors } = formState
 
 	const onSubmit = (data: SkierInput) => {
     onFormSubmit(data)
 	}
+	
 
   return (
-    <form className={`${className || ''} w-[500px]`} onSubmit={handleSubmit(onSubmit)}>
-			<Input className="my-4" type="number" label="Skiers length in cm" name="lengthCm" register={register} isError={!!errors.lengthCm} errorMessage={errors.lengthCm ? errors.lengthCm.message : ''} />
-			<Input className="my-4" type="number" label="Age" name="age" register={register} isError={!!errors.age} errorMessage={errors.age ? errors.age.message : ''}/>
-			<Select className="my-4" label="Type Of Skis" name="typeOfSki" register={register} isError={!!errors.typeOfSki} errorMessage={errors.typeOfSki ? errors.typeOfSki.message : ''} options={[TypeOfSki.Classic, TypeOfSki.Freestyle]}/>
-			<Button className="border-2 border-green-400 rounded-md my-4 py-2 px-4 cursor-pointer text-xl hover:bg-green-400 hover:text-gray-800" disabled={!formState.isValid}>Get recommended ski length</Button>
+    <form className={`${className || ''}`} onSubmit={handleSubmit(onSubmit)}>
+			<Input 
+				className="mb-4" 
+				type="number" 
+				label="Skiers length in cm" 
+				name="lengthCm" register={register} 
+				isError={!!errors.lengthCm} 
+				errorMessage={errors.lengthCm ? errors.lengthCm.message : ''} 
+			/>
+			<Input 
+				className="my-4" 
+				type="number" 
+				label="Age" 
+				name="age" 
+				register={register} 
+				isError={!!errors.age} 
+				errorMessage={errors.age ? errors.age.message : ''}
+			/>
+			<Select 
+				className="my-4" 
+				label="Type of skis" 
+				name="typeOfSki" 
+				register={register} 
+				isError={!!errors.typeOfSki} 
+				errorMessage={errors.typeOfSki ? errors.typeOfSki.message : ''} 
+				options={[TypeOfSki.Classic, TypeOfSki.Freestyle]}
+			/>
+			<Button 
+				className="border-2 border-green-400 rounded-md my-4 py-2 px-4 cursor-pointer text-xl disabled:border-gray-600 disabled:bg-gray-800 hover:bg-green-400" disabled={!formState.isValid}>Get recommended ski length</Button>
 		</form>
   )
 }
