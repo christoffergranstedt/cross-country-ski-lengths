@@ -25,8 +25,6 @@ export const SkiLengthForm: React.FC<SkiLengthProps> = ({ className, onFormSubmi
     onFormSubmit(data)
 	}
 
-	console.log(!formState.isValid)
-	
   return (
     <form className={`${className || ''}`} onSubmit={handleSubmit(onSubmit)}>
 			<Input 

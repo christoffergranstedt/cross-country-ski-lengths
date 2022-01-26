@@ -33,7 +33,7 @@ export const HomePage: React.FC = () => {
 				</div>
 				<div className="border-l-2 border-r-2 border-b-2 border-white rounded-b-xl px-6">
 					<SkiLengthForm className="pt-8" onFormSubmit={onFormSubmit}/>
-					<div className="min-h-22">
+					<div className="min-h-28">
 						<p className="text-green-400 text-md sm:text-xl md:text-2xl w-full my-8 min-h-8">{recommendedSkiLength}</p>
 					</div>
 				</div>
