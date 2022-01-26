@@ -6,14 +6,14 @@ The application consist of a server written in TypeScript and Express and a fron
 To run the application start both the frontend and backend:
 
 ```
-  cd frontend
-  npm install
-  npm start
-  cd ..
+  cd frontend  
+  npm install  
+  npm start  
+  cd ..  
   
-  cd backend
-  npm install
-  npm start
+  cd backend  
+  npm install  
+  npm start  
 ```
 
 
