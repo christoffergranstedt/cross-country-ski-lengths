@@ -7,8 +7,9 @@ export class YoungestAgeRule implements AgeRule {
 
   evaluateMinAndMaxLength (skier: Skier): Skier {
     const skierLengthAndAddedCm = skier.lengthCm
+    const isManifacturedMaxLengthLonger = skier.maxLengthManifacturedLength < skierLengthAndAddedCm
 
-    if (skier.maxLengthManifacturedLength < skierLengthAndAddedCm) {
+    if (isManifacturedMaxLengthLonger) {
       skier.recommendedSkiesMaxLengthCm = skier.maxLengthManifacturedLength
       skier.recommendedSkiesMinLengthCm = skier.maxLengthManifacturedLength
     } else {

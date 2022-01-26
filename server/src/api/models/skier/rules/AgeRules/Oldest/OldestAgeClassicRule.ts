@@ -9,8 +9,9 @@ export class OldestAgeClassicRule implements AgeRule {
 
   evaluateMinAndMaxLength (skier: Skier): Skier {
     const skierLengthAndAddedCm = skier.lengthCm + OldestAgeClassicRule.CM_TO_ADD
+    const isManifacturedMaxLengthLonger = skier.maxLengthManifacturedLength < skierLengthAndAddedCm
 
-    if (skier.maxLengthManifacturedLength < skierLengthAndAddedCm) {
+    if (isManifacturedMaxLengthLonger) {
       skier.recommendedSkiesMaxLengthCm = skier.maxLengthManifacturedLength
       skier.recommendedSkiesMinLengthCm = skier.maxLengthManifacturedLength
     } else {

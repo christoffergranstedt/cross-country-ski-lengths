@@ -10,15 +10,18 @@ export class OldestAgeFreestyleRule implements AgeRule {
 
   evaluateMinAndMaxLength (skier: Skier): Skier {
     const skierLengthAndAddedCmMin = skier.lengthCm + OldestAgeFreestyleRule.CM_TO_ADD_MIN
-    const skierLengthAndAddedCmMax = skier.lengthCm + OldestAgeFreestyleRule.CM_TO_ADD_MAX
+    const isManifacturedMaxLengthLongerThanMin = skier.maxLengthManifacturedLength < skierLengthAndAddedCmMin
 
-    if (skier.maxLengthManifacturedLength < skierLengthAndAddedCmMin) {
+    const skierLengthAndAddedCmMax = skier.lengthCm + OldestAgeFreestyleRule.CM_TO_ADD_MAX
+    const isManifacturedMaxLengthLongerThanMax = skier.maxLengthManifacturedLength < skierLengthAndAddedCmMax
+
+    if (isManifacturedMaxLengthLongerThanMin) {
       skier.recommendedSkiesMinLengthCm = skier.maxLengthManifacturedLength
     } else {
       skier.recommendedSkiesMinLengthCm = skierLengthAndAddedCmMin
     }
 
-    if (skier.maxLengthManifacturedLength < skierLengthAndAddedCmMax) {
+    if (isManifacturedMaxLengthLongerThanMax) {
       skier.recommendedSkiesMaxLengthCm = skier.maxLengthManifacturedLength
     } else {
       skier.recommendedSkiesMaxLengthCm = skierLengthAndAddedCmMax
