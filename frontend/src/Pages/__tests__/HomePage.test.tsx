@@ -8,8 +8,8 @@ import { HomePage } from '../HomePage/HomePage'
 import { act } from 'react-dom/test-utils'
 
 const server = setupServer(
-  rest.get(`${process.env.REACT_APP_BACKEND_URL}/api/skiers/get-recommended-ski-lengths`, (req, res, ctx) => {
-    return res(ctx.json({ data: { recommendedSkiesMinLength: 150, recommendedSkiesMaxLength: 150 } }))
+  rest.post('http://localhost:9000/api/skiers/get-recommended-ski-lengths', (req, res, ctx) => {
+    return res(ctx.json({ data: { recommendedSkiesMinLength: 160, recommendedSkiesMaxLength: 165 } }))
   })
 )
 
@@ -27,6 +27,7 @@ describe('HomePage', () => {
       render(<HomePage />)
       const ageInput = screen.getByLabelText('Age')
       fireEvent.change(ageInput, { target: { value: 36 }})
+      userEvent.selectOptions(screen.getByLabelText('Type of skis'), 'classic')  
       expect(screen.getByRole('button')).toBeDisabled()
     })
   
@@ -34,6 +35,7 @@ describe('HomePage', () => {
       render(<HomePage />)
       const lengthInput = screen.getByLabelText('Skiers length in cm')
       fireEvent.change(lengthInput, { target: { value: 150 }})
+      userEvent.selectOptions(screen.getByLabelText('Type of skis'), 'classic')  
       expect(screen.getByRole('button')).toBeDisabled()
     })
 
@@ -57,15 +59,111 @@ describe('HomePage', () => {
       expect(screen.getByRole('button')).toBeEnabled()
     })
 
-    test('return dsa', () => {
-      server.use(
-        rest.get(`${process.env.REACT_APP_BACKEND_URL}/api/skiers/get-recommended-ski-lengths`, (req, res, ctx) => {
-          return res(ctx.json({ data: { recommendedSkiesMinLength: 150, recommendedSkiesMaxLength: 150 } }))
-        })
-      )
+    test('Warning text should be visible when filling in -1 as age and blur out', async () => {
       render(<HomePage />)
-      
-      expect(screen.getByRole('button')).toBeDisabled()
+      await act(async () => {
+        fireEvent.blur(screen.getByLabelText('Age'), {
+          target: {
+            value: '-1',
+          }
+        })
+      })
+
+      expect(screen.getByText('Minimum 0 years is accepted')).toBeVisible()
+    })
+
+    test('Warning text should be visible when filling in a string as age and blur out', async () => {
+      render(<HomePage />)
+      await act(async () => {
+        fireEvent.blur(screen.getByLabelText('Age'), {
+          target: {
+            value: 'hello',
+          }
+        })
+      })
+
+      expect(screen.getByText('It has to be a number')).toBeVisible()
+    })
+
+    test('Warning text should be visible when filling in 131 as age and blur out', async () => {
+      render(<HomePage />)
+      await act(async () => {
+        fireEvent.blur(screen.getByLabelText('Age'), {
+          target: {
+            value: '131',
+          }
+        })
+      })
+
+      expect(screen.getByText('Maximum 130 years is accepted')).toBeVisible()
+    })
+
+    test('Warning text should be visible when filling in 39 as length and blur out', async () => {
+      render(<HomePage />)
+      await act(async () => {
+        fireEvent.blur(screen.getByLabelText('Skiers length in cm'), {
+          target: {
+            value: '39',
+          }
+        })
+      })
+
+      expect(screen.getByText('Minimum 40 cm is accepted')).toBeVisible()
+    })
+
+    test('Warning text should be visible when filling in 301 as length and blur out', async () => {
+      render(<HomePage />)
+      await act(async () => {
+        fireEvent.blur(screen.getByLabelText('Skiers length in cm'), {
+          target: {
+            value: '301',
+          }
+        })
+      })
+
+      expect(screen.getByText('Maximum 300 cm is accepted')).toBeVisible()
+    })
+
+    test('Warning text should be visible when filling in a string as length and blur out', async () => {
+      render(<HomePage />)
+      await act(async () => {
+        fireEvent.blur(screen.getByLabelText('Skiers length in cm'), {
+          target: {
+            value: 'hello',
+          }
+        })
+      })
+
+      expect(screen.getByText('It has to be a number')).toBeVisible()
+    })
+
+    test('Should return recommended ski length between 160 and 165 cm when filling in 150 cm long, 50 years old and freestyle as type of skis', async () => {
+      render(<HomePage />)
+
+      await act(async () => {
+        fireEvent.blur(screen.getByLabelText('Age'), {
+          target: {
+            value: '50',
+          }
+        })
+        fireEvent.blur(screen.getByLabelText('Skiers length in cm'), {
+          target: {
+            value: '150',
+          }
+        })
+
+        userEvent.selectOptions(screen.getByLabelText('Type of skis'), 'freestyle')
+      })
+
+      await act(async () => {
+        userEvent.click(screen.getByRole('button'))
+      })
+
+      await screen.findByText('Your recommended ski length is between 160 and 165 cm long');
+      expect(screen.getByLabelText('Age')).toHaveValue(50)
+      expect(screen.getByLabelText('Skiers length in cm')).toHaveValue(150)
+      expect(screen.getByLabelText('Type of skis')).toHaveValue('freestyle')
+
     })
 })
 

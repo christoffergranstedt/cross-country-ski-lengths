@@ -10,14 +10,14 @@ export const skierInputSchema = yup.object({
   lengthCm: yup.number()
   .typeError('It has to be a number')
   .integer('It has to be an integer')
-  .min(MIN_LENGTH, `Minimum ${MIN_LENGTH} cm is accpeted`)
-  .max(MAX_LENGTH, `Maximum ${MAX_LENGTH} cm is accpeted`)
+  .min(MIN_LENGTH, `Minimum ${MIN_LENGTH} cm is accepted`)
+  .max(MAX_LENGTH, `Maximum ${MAX_LENGTH} cm is accepted`)
   .required('This field is required'),
   age: yup.number()
   .typeError('It has to be a number')
   .integer('It has to be an integer')
-  .min(MIN_AGE, `Minimum ${MIN_AGE} years is accpeted`)
-  .max(MAX_AGE, `Maximum ${MAX_AGE} years is accpeted`)
+  .min(MIN_AGE, `Minimum ${MIN_AGE} years is accepted`)
+  .max(MAX_AGE, `Maximum ${MAX_AGE} years is accepted`)
   .required('This field is required'),
 	typeOfSki: yup.string()
     .typeError('It has to be a string')
